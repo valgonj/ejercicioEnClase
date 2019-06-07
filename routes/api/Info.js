@@ -12,6 +12,8 @@ var thingsStructure = {
     "docente": ""
 };
 
+var clase = "";
+
 thingsCollection.push(
     Object.assign({},thingsStructure, {"id":"uuid", "clase":"Seminario de Software", "seccion": "A", "cupos":0, "campus": "Sagrado Corazon de Jesus", "docente": "Orlando"})
 );
@@ -21,7 +23,7 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/', (req, res, next)=>{
-    var newElement = Object.assign(thingsStructure, req.body, {"clase":"", "seccion":"", "cupos":"", "clase":"", "clase":""});
+    var newElement = Object.assign(thingsStructure, req.body, {"id": new Date().getTime()});
     thingsCollection.push(newElement);
     res.status(200).json(newElement);
 }); // post /
